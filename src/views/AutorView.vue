@@ -34,6 +34,10 @@ async function excluir(id) {
   autores.value = await autoresApi.buscarTodosOsAutores();
   limpar();
 }
+
+function buscar() {
+  console.log(autor)
+}
 </script>
 
 <template>
@@ -54,6 +58,7 @@ async function excluir(id) {
       <button @click="excluir(autor.id)">X</button>
     </li>
   </ul>
+  <button @click="buscar">teste</button>
 </template>
 
 <style></style>
