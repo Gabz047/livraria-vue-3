@@ -7,6 +7,7 @@ import router from './router';
     <router-link to="/categorias">Categorias</router-link> |
     <router-link to="/editoras">Editoras</router-link> |
     <router-link to="/autores">Autores</router-link> |
+    <router-link to="/livros">Livros</router-link>
     <!--<RouterLink to="/livros">Livros</RouterLink>-->
   </header>
   <main>

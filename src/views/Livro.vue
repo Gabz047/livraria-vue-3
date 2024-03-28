@@ -1,9 +1,11 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
 import LivrosApi from "@/api/livros";
+import CategoriasApi from "@/api/livros";
 const livrosApi = new LivrosApi();
+const categoriasApi = new CategoriasApi();
 
-const defaultLivro = {id: null, titulo: "", quantidade: null, preco: "", categoria: "", editora: "", autores: ""};
+const defaultLivro = {id: null, titulo: "", quantidade: null, preco: "", categorias: [], editora: [], autores: [] };
 const livros = ref([]);
 const livro = reactive({ ...defaultLivro });
 
@@ -43,7 +45,7 @@ async function excluir(id) {
     <input type="number" v-model="livro.quantidade" placeholder="Quantidade" />
     <input type="text" v-model="livro.preco" placeholder="Preço" />
     <select v-model="livro.categoria">
-        <option v-for="nome in categoria" :key="nome.id"></option>
+        <option v-for="nome in livro.categoria" :key="nome.id"></option>
     </select>
     <button @click="salvar">salvar</button>
     <button @click="limpar">limpar</button>
@@ -53,7 +55,7 @@ async function excluir(id) {
     <li v-for="livro in livros" :key="livro.id">
       <span @click="editar(livro)">
         {{ livro.id }} - {{ livro.titulo }} - {{ livro.quantidade }} -
-        {{ livro.preco }}
+        {{ livro.preco }} - {{ livro.editora }} - {{ livro.autores }}
       </span>
       <button @click="excluir(livro.id)">X</button>
     </li>
